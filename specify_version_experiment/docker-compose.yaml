@@ -5,7 +5,7 @@ services:
     image: xirixiz/rundeck-cli
     container_name: rundeck-cli
     environment:
-      #- RD_CLI_VERSION=1.0.14
+       - RD_CLI_VERSION=1.0.14
        - RD_URL=http://rundeck:4440 \
        - RD_TOKEN=AFAKETOKENPLEASEREPLACE \
        - RD_AUTH_PROMPT=false

@@ -1,0 +1,14 @@
+version: '3'
+services:
+  rundeck-cli:
+    image: rd_cli:latest
+    #image: xirixiz/rundeck-cli
+    container_name: rundeck-cli
+    environment:
+       - RD_URL=http://rundeck:4440 \
+       - RD_TOKEN=AFAKETOKENPLEASEREPLACE \
+       - RD_AUTH_PROMPT=false
+  projects_purge_execution_history:
+    image: rd_cli:latest
+    #image: xirixiz/rundeck-cli
+    command: projects_purge_execution_history
