@@ -1,7 +1,7 @@
 FROM alpine
 MAINTAINER Bram van Dartel <root@rootrulez.com>
 
-ENV RD_AUTH_PROMPT false
+ENV RD_AUTH_PROMPT=false
 
 RUN apk add --update bash \
  && apk add --update jq \
