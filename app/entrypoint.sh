@@ -6,7 +6,10 @@ if [[ -z $RD_TOKEN ]]; then echo "RD_TOKEN not specified!" && exit 1; fi
 
 script=$1
 
-if [[ ${script} == "rd" ]]; then
+if [[ ${script} == "bash" ]]; then
+  shift
+  /bin/bash
+elif [[ ${script} == "rd" ]]; then
   shift
   /rundeck-cli/bin/rd $*
 else

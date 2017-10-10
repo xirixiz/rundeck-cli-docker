@@ -6,8 +6,8 @@ function usage {
     echo -e ""
     echo -e "  General parameters:"
     echo -e "    --age            specify purge after date. Default 7d."
-    echo -e "    --max            maximum number to purge per run. Default is 100."
-    echo -e "    --timeout        maximum amount of time allowed to purge the value specified for --max. Default 28800 (seconds)."
+    echo -e "    --max            maximum number to purge per run. Default is 1000."
+#    echo -e "    --timeout        maximum amount of time allowed to purge the value specified for --max. Default 3600 (seconds)."
     echo -e "    --debug          debug mode."
     echo -e "    -?               help."
     exit 0
@@ -29,8 +29,8 @@ done
 ##### Main
 if [[ ! -z $DEBUG ]]; then set -x; fi
 if [[ -z $AGE ]]; then export AGE="7d"; fi
-if [[ -z $MAX ]]; then export MAX="100"; fi
-if [[ -z $RD_HTTP_TIMEOUT ]]; then export RD_HTTP_TIMEOUT="28800"; fi
+if [[ -z $MAX ]]; then export MAX="1000"; fi
+#if [[ -z $RD_HTTP_TIMEOUT ]]; then export RD_HTTP_TIMEOUT="3600"; fi
 
 export PROJECTS=$(/rundeck-cli/bin/rd projects list --outformat %name) # find all projecs in Rundeck
 
