@@ -1,18 +1,16 @@
 #!/bin/sh
-set -e
+set -eu
 
 if [[ -z $RD_URL ]]; then echo "RD_URL not specified!" && exit 1; fi
 if [[ -z $RD_TOKEN ]]; then echo "RD_TOKEN not specified!" && exit 1; fi
 
 script=$1
 
-if [[ ${script} == "bash" ]]; then
+if [[ ${script} == "rd" ]]; then
   shift
-  /bin/bash
-elif [[ ${script} == "rd" ]]; then
-  shift
-  /rundeck-cli/bin/rd $*
+  /rundeck-cli/bin/rd "$@"
 else
   shift
-  sh $script.sh $*
+  bash $script.sh "$@"
 fi
+
