@@ -21,4 +21,4 @@ RUN chmod +x *.sh
 
 #ENTRYPOINT ["/rundeck-cli/bin/rd"]
 #CMD ["help"]
-ENTRYPOINT ["sh", "entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "entrypoint.sh"]
