@@ -32,11 +32,11 @@ if [[ -z $AGE ]]; then export AGE="7d"; fi
 if [[ -z $MAX ]]; then export MAX="1000"; fi
 if [[ -z $RD_HTTP_TIMEOUT ]]; then export RD_HTTP_TIMEOUT="3600"; fi
 
-export PROJECTS=$(/rundeck-cli/bin/rd projects list --outformat %name) # find all projecs in Rundeck
+export PROJECTS=$(rd projects list --outformat %name) # find all projecs in Rundeck
 
 for i in ${PROJECTS}; do
   echo "Cleaning up job execution history for project: $i"
-  while [[ $(/rundeck-cli/bin/rd executions query --older ${AGE} --max ${MAX} -p $i --outformat %id | wc -l) -gt 0 ]]; do
-    /rundeck-cli/bin/rd executions deletebulk --confirm -y --older ${AGE} --max ${MAX} -p $i
+  while [[ $(rd executions query --older ${AGE} --max ${MAX} -p $i --outformat %id | wc -l) -gt 0 ]]; do
+    rd executions deletebulk --confirm -y --older ${AGE} --max ${MAX} -p $i
   done
 done
