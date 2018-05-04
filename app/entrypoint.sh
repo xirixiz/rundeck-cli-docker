@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 if [[ -z $RD_URL ]]; then echo "RD_URL not specified!" && exit 1; fi
@@ -11,5 +11,5 @@ if [[ ${script} == "rd" ]]; then
   /rundeck-cli/bin/rd "$@"
 else
   shift
-  bash $script.sh "$@"
+  ./$script.sh "$@"
 fi
